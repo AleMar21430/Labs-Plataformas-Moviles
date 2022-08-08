@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Lab 2</string>
+    <string name="Dia">Domingo</string>
+    <string name="Fecha">25 de Diciembre de 2022</string>
+    <string name="Restaurante">Pizza Vesuvio</string>
+    <string name="Lugar">Paseo Cayalá, Blvr. Rafael Landivar 10-05, Cdad. de Guatemala 01016</string>
+    <string name="Horario">10:00Am - 22:00PM</string>
+</resources>
