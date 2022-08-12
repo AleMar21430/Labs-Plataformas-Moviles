@@ -5,4 +5,5 @@
     <string name="Restaurante">Pizza Vesuvio</string>
     <string name="Lugar">Paseo Cayalá, Blvr. Rafael Landivar 10-05, Cdad. de Guatemala 01016</string>
     <string name="Horario">10:00Am - 22:00PM</string>
+    <string name="Button">Iniciar</string>
 </resources>
