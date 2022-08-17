@@ -25,9 +25,8 @@ class MainActivity : AppCompatActivity() {
         }
         val Detalles = findViewById(R.id.button4) as Button
         Detalles.setOnClickListener{
-            val intent = Intent(Intent.ACTION_VIEW)
-            val Maps = Intent.createChooser(intent, "Launch Maps")
-            startActivity(Maps)
+            val intent = Intent(this, DetailActivity::class.java)
+            startActivity(intent)
         }
         val Descargar = findViewById(R.id.button5) as Button
         Descargar.setOnClickListener{
