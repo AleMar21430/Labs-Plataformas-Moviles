@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         Direcciones.setOnClickListener{
             val intent = Intent(Intent.ACTION_VIEW)
             intent.setData(Uri.parse("geo:14.611189270542207,-90.485456403024"))
+            //https://www.google.com/maps/place/Pizza+Vesuvio+%E2%80%A2+Cayal%C3%A1/@14.6096919,-90.4879125,17z/data=!4m5!3m4!1s0x8589a4b4142b1dff:0x11b3c522940c2e18!8m2!3d14.6086548!4d-90.4867692
             val Maps = Intent.createChooser(intent, "Launch Maps")
             startActivity(Maps)
         }
