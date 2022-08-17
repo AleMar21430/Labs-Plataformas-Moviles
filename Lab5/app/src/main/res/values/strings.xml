@@ -7,7 +7,8 @@
     <string name="Horario">10:00Am - 22:00PM</string>
     <string name="Button">Iniciar</string>
     <string name="Detalles">Detalles</string>
-    <string name="Descargar">Descargarr</string>
+    <string name="Descargar">Descargar</string>
+    <string name="Direcciones">Direcciones</string>
     <string name="title_activity_details_detail_host">DetailsActivityDetailHostActivity</string>
     <string name="title_detailsactivity_list">Items</string>
     <string name="title_detailsactivity_detail">DetailsActivity Detail</string>
