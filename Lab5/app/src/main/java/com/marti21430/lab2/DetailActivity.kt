@@ -3,14 +3,15 @@ package com.marti21430.lab2
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.widget.Button
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.marti21430.lab2.databinding.ActivityDetailBinding
+
 
 class DetailActivity : AppCompatActivity() {
 
@@ -32,6 +33,12 @@ class DetailActivity : AppCompatActivity() {
         val Llamar = findViewById(R.id.button3) as Button
         Llamar.setOnClickListener{
             startActivity(Intent(Intent.ACTION_DIAL, Uri.parse("tel:23232323")))
+        }
+        val Camera = findViewById(R.id.button6) as Button
+        Camera.setOnClickListener{
+            val cameraIntent = Intent()
+            cameraIntent.setAction(MediaStore.ACTION_IMAGE_CAPTURE)
+            startActivity(cameraIntent)
         }
     }
 
