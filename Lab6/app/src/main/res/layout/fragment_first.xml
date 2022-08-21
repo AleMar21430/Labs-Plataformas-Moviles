@@ -8,7 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +28,7 @@
                 android:layout_weight="1" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/button_home"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content" />
 
@@ -38,7 +38,7 @@
                 android:layout_weight="1" />
 
             <Button
-                android:id="@+id/button_self"
+                android:id="@+id/button_search"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:text="@string/search" />
@@ -49,7 +49,7 @@
                 android:layout_weight="1" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/button_library"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:text="@string/library" />

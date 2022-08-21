@@ -124,7 +124,7 @@
                 android:layout_weight="1" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/button_home"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:text="@string/home" />
@@ -135,7 +135,7 @@
                 android:layout_weight="1" />
 
             <Button
-                android:id="@+id/button_self"
+                android:id="@+id/button_search"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content" />
 
@@ -145,7 +145,7 @@
                 android:layout_weight="1" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/button_library"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:text="@string/library" />
