@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scaleX="1"
-    tools:context=".SecondFragment">
+    tools:context=".ThirdFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
@@ -96,7 +95,7 @@
                 android:layout_weight="1" />
 
             <Button
-                android:id="@+id/button_first"
+                android:id="@+id/button_self"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:text="@string/search" />
@@ -109,8 +108,7 @@
             <Button
                 android:id="@+id/button2"
                 android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="@string/library" />
+                android:layout_height="wrap_content" />
 
             <Space
                 android:layout_width="wrap_content"
