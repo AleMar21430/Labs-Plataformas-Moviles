@@ -8,22 +8,13 @@
     <fragment
         android:id="@+id/login"
         android:name="com.marti21430.lab7.Login"
-        android:label="fragment_register"
-        tools:layout="@layout/fragment_register" >
+        android:label="Login" >
         <action
             android:id="@+id/action_login_to_welcome"
             app:destination="@id/welcome" />
         <action
             android:id="@+id/action_login_to_register"
             app:destination="@id/register" />
-    </fragment>
-    <fragment
-        android:id="@+id/welcome"
-        android:name="com.marti21430.lab7.Welcome"
-        android:label="Welcome" >
-        <action
-            android:id="@+id/action_welcome_to_my_Profile"
-            app:destination="@id/my_Profile" />
     </fragment>
     <fragment
         android:id="@+id/my_Profile"
@@ -40,5 +31,13 @@
         <action
             android:id="@+id/action_register_to_welcome"
             app:destination="@id/welcome" />
+    </fragment>
+    <fragment
+        android:id="@+id/welcome"
+        android:name="com.marti21430.lab7.Welcome"
+        android:label="Welcome" >
+        <action
+            android:id="@+id/action_welcome_to_my_Profile"
+            app:destination="@id/my_Profile" />
     </fragment>
 </navigation>
