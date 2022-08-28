@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.marti21430.lab7.databinding.FragmentLoginBinding
 
@@ -36,7 +38,14 @@ class Login : Fragment() {
             findNavController().navigate(R.id.action_login_to_register)
         }
         binding.ButtonLoginToWelcome.setOnClickListener {
-            findNavController().navigate(R.id.action_login_to_welcome)
+
+            var gotusername = MyApplication().username
+            var inputusername = getView()?.findViewById(R.id.Text_Input_Register_Mail) as EditText
+            if (inputusername.text.toString() != gotusername) {
+                Toast.makeText(activity, "Usuario Incorrecto", Toast.LENGTH_SHORT).show()
+            }else{
+                findNavController().navigate(R.id.action_login_to_welcome)
+            }
         }
     }
 

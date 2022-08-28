@@ -1,12 +1,14 @@
 package com.marti21430.lab7
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.marti21430.lab7.databinding.FragmentRegisterBinding
+
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -34,6 +36,8 @@ class Register : Fragment() {
 
         binding.ButtonRegisterToWelcome.setOnClickListener {
             findNavController().navigate(R.id.action_register_to_welcome)
+            var newusername = getView()?.findViewById(R.id.Text_Input_Register_Mail) as EditText
+            MyApplication().username = newusername.text.toString()
         }
     }
 
