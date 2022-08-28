@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragment_login">
+
+    <fragment
+        android:id="@+id/login"
+        android:name="com.marti21430.lab7.Login"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_login_to_welcome"
+            app:destination="@id/welcome" />
+        <action
+            android:id="@+id/action_login_to_register"
+            app:destination="@id/register" />
+    </fragment>
+    <fragment
+        android:id="@+id/welcome"
+        android:name="com.marti21430.lab7.Welcome"
+        android:label="Welcome" >
+        <action
+            android:id="@+id/action_welcome_to_my_Profile"
+            app:destination="@id/my_Profile" />
+    </fragment>
+    <fragment
+        android:id="@+id/my_Profile"
+        android:name="com.marti21430.lab7.My_Profile"
+        android:label="My_Profile" >
+        <action
+            android:id="@+id/action_my_Profile_to_login"
+            app:destination="@id/login" />
+    </fragment>
+    <fragment
+        android:id="@+id/register"
+        android:name="com.marti21430.lab7.Register"
+        android:label="Register" >
+        <action
+            android:id="@+id/action_register_to_welcome"
+            app:destination="@id/welcome" />
+    </fragment>
+</navigation>
