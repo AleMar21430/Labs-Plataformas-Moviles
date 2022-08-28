@@ -14,4 +14,5 @@
     <string name="crear_cuenta">Crear Cuenta</string>
     <string name="registrarse">Registrarse</string>
     <string name="mi_perfil">Mi Perfil</string>
+    <string name="regresar_al_menu">Regresar al Menu</string>
 </resources>

@@ -32,6 +32,8 @@ class My_Profile : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.textView4.text = MyApplication().username
+
         binding.ButtonToLogin.setOnClickListener {
             findNavController().navigate(R.id.action_my_Profile_to_login)
         }
