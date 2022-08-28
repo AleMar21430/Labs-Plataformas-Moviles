@@ -39,9 +39,9 @@ class Login : Fragment() {
         }
         binding.ButtonLoginToWelcome.setOnClickListener {
 
-            var gotusername = MyApplication().username
             var inputusername = getView()?.findViewById(R.id.Text_Input_Register_Mail) as EditText
-            if (inputusername.text.toString() != gotusername) {
+
+            if (inputusername.text.toString() != MyApplication().username) {
                 Toast.makeText(activity, "Usuario Incorrecto", Toast.LENGTH_SHORT).show()
             }else{
                 findNavController().navigate(R.id.action_login_to_welcome)
