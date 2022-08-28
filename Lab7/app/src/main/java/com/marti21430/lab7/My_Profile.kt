@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.marti21430.lab7.databinding.FragmentMyProfileBinding
+import com.marti21430.lab7.MyApplication.Companion.username
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -32,7 +33,7 @@ class My_Profile : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.textView4.text = MyApplication().username
+        binding.textView4.text = username
 
         binding.ButtonToLogin.setOnClickListener {
             findNavController().navigate(R.id.action_my_Profile_to_login)

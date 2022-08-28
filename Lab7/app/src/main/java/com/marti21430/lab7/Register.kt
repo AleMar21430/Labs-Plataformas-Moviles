@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.marti21430.lab7.databinding.FragmentRegisterBinding
+import com.marti21430.lab7.MyApplication.Companion.username
 
 
 /**
@@ -37,7 +39,8 @@ class Register : Fragment() {
         binding.ButtonRegisterToWelcome.setOnClickListener {
             findNavController().navigate(R.id.action_register_to_welcome)
             var newusername = getView()?.findViewById(R.id.Text_Input_Register_Mail) as EditText
-            MyApplication().username = newusername.text.toString()
+            username = newusername.text.toString()
+            Toast.makeText(activity, username, Toast.LENGTH_SHORT).show()
         }
     }
 

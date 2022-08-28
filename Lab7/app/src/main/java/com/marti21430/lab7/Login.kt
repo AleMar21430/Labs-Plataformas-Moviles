@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.marti21430.lab7.databinding.FragmentLoginBinding
+import com.marti21430.lab7.MyApplication.Companion.username
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -39,9 +40,9 @@ class Login : Fragment() {
         }
         binding.ButtonLoginToWelcome.setOnClickListener {
 
-            var inputusername = getView()?.findViewById(R.id.Text_Input_Register_Mail) as EditText
+            val inputusername = getView()?.findViewById(R.id.Text_Input_Register_Mail) as EditText
 
-            if (inputusername.text.toString() != MyApplication().username) {
+            if (inputusername.text.toString() != username) {
                 Toast.makeText(activity, "Usuario Incorrecto", Toast.LENGTH_SHORT).show()
             }else{
                 findNavController().navigate(R.id.action_login_to_welcome)
