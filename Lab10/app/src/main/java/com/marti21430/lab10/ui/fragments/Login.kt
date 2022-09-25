@@ -40,9 +40,11 @@ class Login : Fragment() {
         binding.ButtonLoginToWelcome.setOnClickListener {
 
             val inputusername = getView()?.findViewById(R.id.Text_Input_Mail) as EditText
-
+            val inputpassword = getView()?.findViewById(R.id.Text_Input_Password) as EditText
             if (inputusername.text.toString() != username) {
-                Toast.makeText(activity, "Usuario Incorrecto", Toast.LENGTH_SHORT).show()
+                if (inputpassword.text.toString() != username) {
+                    Toast.makeText(activity, "Credenciales Incorrectas", Toast.LENGTH_SHORT).show()
+                }
             }else{
                 findNavController().navigate(R.id.action_login_to_characterListFragment)
             }

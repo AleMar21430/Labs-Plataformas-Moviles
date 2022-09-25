@@ -41,8 +41,11 @@ class CharacterListFragment : Fragment(R.layout.fragment_character_list), Charac
     private fun setToolbar() {
         val navController = findNavController()
         val appbarConfig = AppBarConfiguration(navController.graph)
+        val appBarConfiguration = AppBarConfiguration
+            .Builder(R.id.characterListFragment,R.id.login)
+            .build()
+        toolbar.setupWithNavController(navController, appBarConfiguration)
 
-        toolbar.setupWithNavController(navController, appbarConfig)
     }
 
     private fun setListeners() {

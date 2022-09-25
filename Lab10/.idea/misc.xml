@@ -5,6 +5,9 @@
       <map>
         <entry key="..\:/UVG/Lab10/app/src/main/res/layout/activity_main.xml" value="0.33229166666666665" />
         <entry key="..\:/UVG/Lab10/app/src/main/res/layout/fragment_login.xml" value="0.335" />
+        <entry key="..\:/UVG/Labs-Plataformas-Moviles/Lab10/app/src/main/res/layout/fragment_character_list.xml" value="0.19021739130434784" />
+        <entry key="..\:/UVG/Labs-Plataformas-Moviles/Lab10/app/src/main/res/layout/recycler_item_character.xml" value="0.19021739130434784" />
+        <entry key="..\:/UVG/Labs-Plataformas-Moviles/Lab10/app/src/main/res/menu/sort_menu.xml" value="0.33229166666666665" />
         <entry key="app/src/main/res/drawable-v24/ic_downloading.xml" value="0.1775" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.16458333333333333" />
         <entry key="app/src/main/res/layout/fragment_character_details.xml" value="0.33" />

@@ -29,6 +29,9 @@
         android:label="Login" >
         <action
             android:id="@+id/action_login_to_characterListFragment"
-            app:destination="@id/characterListFragment" />
+            app:destination="@id/characterListFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/nav_graph"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
