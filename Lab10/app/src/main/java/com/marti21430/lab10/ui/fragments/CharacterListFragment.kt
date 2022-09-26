@@ -1,5 +1,6 @@
 package com.marti21430.lab10.ui.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -60,6 +61,12 @@ class CharacterListFragment : Fragment(R.layout.fragment_character_list), Charac
                 R.id.menu_item_des -> {
                     characters.sortByDescending { character -> character.name }
                     adapter.notifyDataSetChanged()
+                    true
+                }
+                R.id.menu_item_logout -> {
+
+                    this.activity?.getSharedPreferences("MyUserPrefs", Context.MODE_PRIVATE)?.edit()?.putBoolean("Logged", false)?.apply()
+                    findNavController().navigate(R.id.action_characterListFragment_to_login)
                     true
                 }
                 else -> true
