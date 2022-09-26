@@ -37,13 +37,21 @@ class Login : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val prefs = this.requireActivity().getSharedPreferences("MyUserPrefs", Context.MODE_PRIVATE)
 
+        if (prefs.getBoolean("Logged", true)){
+            findNavController().navigate(R.id.action_login_to_characterListFragment)
+        }
         binding.ButtonLoginToWelcome.setOnClickListener {
 
             val inputusername = getView()?.findViewById(R.id.Text_Input_Mail) as EditText
             val inputpassword = getView()?.findViewById(R.id.Text_Input_Password) as EditText
+
             if (inputusername.text.toString() != username) {
+
                 if (inputpassword.text.toString() != username) {
+
+                    prefs.edit().putBoolean("Logged", true).apply()
                     Toast.makeText(activity, "Credenciales Incorrectas", Toast.LENGTH_SHORT).show()
                 }
             }else{

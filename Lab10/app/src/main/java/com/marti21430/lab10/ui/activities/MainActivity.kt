@@ -14,14 +14,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val storedData = getSharedPreferences("MyUserPrefs", Context.MODE_PRIVATE)
-        storedData.edit().putBoolean("Logged", false)
-        storedData.edit().apply()
-        if (storedData.getBoolean("Logged", true)){
+
             setContentView(R.layout.activity_main)
             actionBar?.hide()
-        }else{
-            setContentView(R.layout.activity_main)
-            actionBar?.hide()
-        }
     }
 }
