@@ -17,6 +17,7 @@ import com.marti21430.lab10.datasource.model.Character
 import com.marti21430.lab10.datasource.model.CharactersResponse
 import com.marti21430.lab10.ui.adapters.CharacterAdapter
 import com.google.android.material.appbar.MaterialToolbar
+import com.marti21430.lab10.ui.activities.MainActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -65,7 +66,10 @@ class CharacterListFragment : Fragment(R.layout.fragment_character_list), Charac
                 }
                 R.id.menu_item_logout -> {
 
-                    this.activity?.getSharedPreferences("MyUserPrefs", Context.MODE_PRIVATE)?.edit()?.putBoolean("Logged", false)?.apply()
+                    val prefs = (activity as MainActivity).getSharedPreferences("MyUserPrefs", Context.MODE_PRIVATE)
+                    prefs.edit().putBoolean("Log", false)
+                    prefs.edit().apply()
+                    prefs.edit().commit()
                     findNavController().navigate(R.id.action_characterListFragment_to_login)
                     true
                 }

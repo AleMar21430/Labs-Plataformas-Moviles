@@ -13,9 +13,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val storedData = getSharedPreferences("MyUserPrefs", Context.MODE_PRIVATE)
+        val prefs = getSharedPreferences("MyUserPrefs", Context.MODE_PRIVATE)
+        setContentView(R.layout.activity_main)
+        actionBar?.hide()
 
-            setContentView(R.layout.activity_main)
-            actionBar?.hide()
+        if (!prefs.contains("Log")) {
+            prefs.edit().putBoolean("Log", false)
+            prefs.edit().apply()
+            prefs.edit().commit()
+        }
     }
 }
