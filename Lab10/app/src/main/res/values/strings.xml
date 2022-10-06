@@ -10,4 +10,9 @@
     <string name="characters">Characters</string>
     <string name="character_detail">Character Detail</string>
     <string name="error_fetching">Error al llamar al API</string>
+    <string name="error_email_password">Correo o contraseña incorrecta</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="password">Contraseña</string>
+    <string name="email">Correo</string>
+    <string name="my_email">jcdurini@uvg.edu.gt</string>
 </resources>

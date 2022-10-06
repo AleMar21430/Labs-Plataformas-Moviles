@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/login">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/characterListFragment"
@@ -14,11 +14,11 @@
             android:id="@+id/action_characterListFragment_to_characterDetailsFragment"
             app:destination="@id/characterDetailsFragment" />
         <action
-            android:id="@+id/action_characterListFragment_to_login"
-            app:destination="@id/login"
-            app:launchSingleTop="true"
-            app:popUpTo="@+id/nav_graph"
-            app:popUpToInclusive="true" />
+            android:id="@+id/action_characterListFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/characterListFragment"
+            app:popUpToInclusive="true"
+            />
     </fragment>
     <fragment
         android:id="@+id/characterDetailsFragment"
@@ -30,14 +30,15 @@
             app:argType="integer" />
     </fragment>
     <fragment
-        android:id="@+id/login"
-        android:name="com.marti21430.lab10.ui.fragments.Login"
-        android:label="Login" >
+        android:id="@+id/loginFragment"
+        android:name="com.marti21430.lab10.ui.fragments.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_login_to_characterListFragment"
+            android:id="@+id/action_loginFragment_to_characterListFragment"
             app:destination="@id/characterListFragment"
-            app:launchSingleTop="true"
-            app:popUpTo="@+id/nav_graph"
-            app:popUpToInclusive="true" />
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true"
+            />
     </fragment>
 </navigation>

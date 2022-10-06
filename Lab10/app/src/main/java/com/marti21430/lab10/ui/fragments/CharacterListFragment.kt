@@ -1,6 +1,5 @@
 package com.marti21430.lab10.ui.fragments
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -15,9 +14,14 @@ import com.marti21430.lab10.R
 import com.marti21430.lab10.datasource.api.RetrofitInstance
 import com.marti21430.lab10.datasource.model.Character
 import com.marti21430.lab10.datasource.model.CharactersResponse
+import com.marti21430.lab10.ui.KEY_EMAIL
 import com.marti21430.lab10.ui.adapters.CharacterAdapter
+import com.marti21430.lab10.ui.dataStore
+import com.marti21430.lab10.ui.removePreferencesValue
 import com.google.android.material.appbar.MaterialToolbar
-import com.marti21430.lab10.ui.activities.MainActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -42,12 +46,9 @@ class CharacterListFragment : Fragment(R.layout.fragment_character_list), Charac
 
     private fun setToolbar() {
         val navController = findNavController()
-        val appbarConfig = AppBarConfiguration(navController.graph)
-        val appBarConfiguration = AppBarConfiguration
-            .Builder(R.id.characterListFragment,R.id.login)
-            .build()
-        toolbar.setupWithNavController(navController, appBarConfiguration)
+        val appbarConfig = AppBarConfiguration(setOf(R.id.characterListFragment))
 
+        toolbar.setupWithNavController(navController, appbarConfig)
     }
 
     private fun setListeners() {
@@ -64,13 +65,9 @@ class CharacterListFragment : Fragment(R.layout.fragment_character_list), Charac
                     adapter.notifyDataSetChanged()
                     true
                 }
-                R.id.menu_item_logout -> {
 
-                    val prefs = (activity as MainActivity).getSharedPreferences("MyUserPrefs", Context.MODE_PRIVATE)
-                    prefs.edit().putBoolean("Log", false)
-                    prefs.edit().apply()
-                    prefs.edit().commit()
-                    findNavController().navigate(R.id.action_characterListFragment_to_login)
+                R.id.menu_item_logout -> {
+                    logout()
                     true
                 }
                 else -> true
@@ -105,6 +102,17 @@ class CharacterListFragment : Fragment(R.layout.fragment_character_list), Charac
         recyclerCharacters.layoutManager = LinearLayoutManager(requireContext())
         recyclerCharacters.setHasFixedSize(true)
         recyclerCharacters.adapter = adapter
+    }
+
+    private fun logout() {
+        CoroutineScope(Dispatchers.IO).launch {
+            requireContext().dataStore.removePreferencesValue(KEY_EMAIL)
+            CoroutineScope(Dispatchers.Main).launch {
+                requireView().findNavController().navigate(
+                    CharacterListFragmentDirections.actionCharacterListFragmentToLoginFragment()
+                )
+            }
+        }
     }
 
     override fun onItemClicked(character: Character) {
