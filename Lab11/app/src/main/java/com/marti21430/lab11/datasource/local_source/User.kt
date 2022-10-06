@@ -1,4 +1,16 @@
 package com.marti21430.lab11.datasource.local_source
 
-interface User {
-}
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity
+data class User(
+    @PrimaryKey(autoGenerate = true)
+    val id: Int,
+    val name: String,
+    val species: String,
+    val status: String,
+    val gender: String,
+    val origin: String,
+    val episodes: Int
+)
