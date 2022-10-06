@@ -1,28 +1,28 @@
 package com.marti21430.lab11.datasource.local_source
 
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.marti21430. lab11.datasource.local_source.User
 
 
-interface UserDAO {
+@Dao
+interface UserDao {
+
     @Query("SELECT * FROM user")
-    suspend fun getAllUsers(): List<User>
+    suspend fun getUsers(): List<User>
 
     @Query("SELECT * FROM user WHERE id = :id")
-    suspend fun getUser(): User
+    suspend fun getUserById(id: Int): User?
 
-    @Query("DELETE FROM user")
-    suspend fun deleteAll(): Int
+    @Update
+    suspend fun update(user: User)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(user: User)
 
     @Delete
     suspend fun delete(user: User): Int
 
-    @Insert
-    suspend fun insert(user: User)
+    @Query("DELETE FROM user")
+    suspend fun deleteAll(): Int
 
-    @Update
-    suspend fun update(user: User)
 }
