@@ -67,8 +67,8 @@ class CharacterDetailsFragment : Fragment(R.layout.fragment_character_details) {
             "dbname"
         ).build()
 
-        if (args.id == 0) {
-            getAPICharacter()
+        if (args.id == -1) {
+            createUser = true
         } else {
             fetchUser()
         }
@@ -92,7 +92,7 @@ class CharacterDetailsFragment : Fragment(R.layout.fragment_character_details) {
             }
 
             override fun onFailure(call: Call<Character>, t: Throwable) {
-                Toast.makeText(requireContext(), getString(R.string.error_fetching), Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), getString(R.string.error_fetching), Toast.LENGTH_SHORT).show()
             }
 
         })
@@ -117,13 +117,18 @@ class CharacterDetailsFragment : Fragment(R.layout.fragment_character_details) {
 
     private fun setListeners() {
         ButtonSave.setOnClickListener {
-            createUser()
+            if (createUser)
+                createUser()
+            else
+                updateUser()
         }
         ButtonRefresh.setOnClickListener {
             getAPICharacter()
         }
         ButtonDelete.setOnClickListener {
-            resetUser()
+            CoroutineScope(Dispatchers.IO).launch {
+                database.userDao().deleteAll()
+            }
         }
     }
 
@@ -132,15 +137,14 @@ class CharacterDetailsFragment : Fragment(R.layout.fragment_character_details) {
             val user = database.userDao().getUserById(args.id)
             CoroutineScope(Dispatchers.Main).launch {
                 if (user != null) {
-                    txtName.text = (user.name)
-                    txtSpecies.text = (user.species)
-                    txtStatus.text = (user.status)
-                    txtGender.text = (user.gender)
-                    txtOrigin.text = (user.origin)
-                    txtEpisodes.text = (user.episodes.toString())
+                    txtName.text = user.name
+                    txtStatus.text = user.status
+                    txtSpecies.text = user.species
+                    txtGender.text = user.gender
+                    txtOrigin.text = user.origin
+                    txtEpisodes.text = user.episodes.toString()
                     currentUser = user
-                } else {
-                    createUser = true
+                }else{
                     getAPICharacter()
                 }
             }
@@ -150,39 +154,45 @@ class CharacterDetailsFragment : Fragment(R.layout.fragment_character_details) {
     private fun createUser() {
         val user = User(
             name = txtName.text.toString(),
-            species = txtSpecies.text.toString(),
             status = txtStatus.text.toString(),
+            species = txtSpecies.text.toString(),
             gender = txtGender.text.toString(),
             origin = txtOrigin.text.toString(),
-            episodes = txtEpisodes.text.toString().toInt()
+            episodes = txtEpisodes.text.toString().toInt(),
         )
         CoroutineScope(Dispatchers.IO).launch {
             database.userDao().insert(user)
             CoroutineScope(Dispatchers.Main).launch {
                 Toast.makeText(
                     requireContext(),
-                    "Data guardada exitosamente",
-                    Toast.LENGTH_LONG
+                    "Usuario creado exitosamente",
+                    Toast.LENGTH_SHORT
                 ).show()
                 requireActivity().onBackPressed()
             }
         }
     }
 
-    private fun resetUser() {
-        getAPICharacter()
-        val updatedUser = currentUser.copy(
+    private fun updateUser() {
+        val updatedUser = User(
             name = txtName.text.toString(),
-            species = txtSpecies.text.toString(),
             status = txtStatus.text.toString(),
+            species = txtSpecies.text.toString(),
             gender = txtGender.text.toString(),
             origin = txtOrigin.text.toString(),
-            episodes = txtEpisodes.text.toString().toInt()
+            episodes = txtEpisodes.text.toString().toInt(),
         )
 
         CoroutineScope(Dispatchers.IO).launch {
             database.userDao().update(updatedUser)
+            CoroutineScope(Dispatchers.Main).launch {
+                Toast.makeText(
+                    requireContext(),
+                    "Usuario actualizado exitosamente",
+                    Toast.LENGTH_SHORT
+                ).show()
+                requireActivity().onBackPressed()
+            }
         }
     }
-
 }

@@ -19,6 +19,9 @@ import com.marti21430.lab11.ui.adapters.CharacterAdapter
 import com.marti21430.lab11.ui.dataStore
 import com.marti21430.lab11.ui.removePreferencesValue
 import com.google.android.material.appbar.MaterialToolbar
+import com.marti21430.lab11.datasource.local_source.Database
+import com.marti21430.lab11.datasource.local_source.User
+import com.marti21430.lab11.datasource.model.CharacterDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -32,6 +35,10 @@ class CharacterListFragment : Fragment(R.layout.fragment_character_list), Charac
     private lateinit var adapter: CharacterAdapter
     private lateinit var toolbar: MaterialToolbar
     private lateinit var recyclerCharacters: RecyclerView
+
+    private lateinit var database: Database
+    private lateinit var userAdapter: CharacterDatabase
+    private val userList: MutableList<User> = mutableListOf()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -82,7 +89,7 @@ class CharacterListFragment : Fragment(R.layout.fragment_character_list), Charac
                 response: Response<CharactersResponse>
             ) {
                 if (response.isSuccessful) {
-                    val res = response.body()?.results
+                    val res: MutableList<Character>? = response.body()?.results
                     setupRecycler(res ?: mutableListOf())
                 }
             }
@@ -93,6 +100,7 @@ class CharacterListFragment : Fragment(R.layout.fragment_character_list), Charac
 
         })
     }
+
 
     private fun setupRecycler(characters: MutableList<Character>) {
 
